@@ -13,18 +13,7 @@
             height: 100vh;
             background-color: #f4f4f9;
             margin: 0;
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 900px;
+            overflow: hidden;
         }
 
         .image-container {
@@ -72,6 +61,11 @@
 
         /* Typing animation */
         .typing {
+            display: inline-block;
+            width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid black;
             animation: typing 3s steps(30) 1s forwards, blink-caret 0.75s step-end infinite;
         }
 
@@ -89,21 +83,26 @@
                 border-color: transparent;
             }
         }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="content">
     <div class="image-container">
         <img src="ImageTalking.png" alt="Your Image">
         <div class="speech-bubble" id="speech-bubble">
             <!-- Placeholder text will appear here -->
-            "Hello, I am Domie. Welcome to my page!"
+            <span class="typing">"Hello, I am Domie. Welcome to my page!"</span>
         </div>
     </div>
-    <div>
-        <button class="next-button" onclick="nextText()">Next</button>
-    </div>
+    <button class="next-button" onclick="nextText()">Next</button>
 </div>
 
 <script>
