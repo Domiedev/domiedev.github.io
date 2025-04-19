@@ -28,12 +28,13 @@
             width: 400px;
             height: auto;
             margin-bottom: 10px;
+            animation: jump 0.5s ease-in-out infinite alternate; /* This jump animation is default for now */
         }
 
         .text {
             font-size: 18px;
             color: #333;
-            margin-bottom: 5px; /* Moved the text even closer to the image */
+            margin-bottom: 5px;
         }
 
         .next-button, .home-button {
@@ -44,7 +45,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 5px; /* Moved the button up closer */
+            margin-top: 5px;
         }
 
         .next-button:hover, .home-button:hover {
@@ -69,7 +70,7 @@
             }
         }
 
-        /* Jumping effect for the image (only active during text animation) */
+        /* Jumping effect for the image */
         @keyframes jump {
             0% {
                 transform: translateY(0);
@@ -82,7 +83,7 @@
             }
         }
 
-        /* Only trigger jump animation on typing */
+        /* Jumping effect for the image (only active during text animation) */
         .image-container.typing img {
             animation: jump 0.5s ease-in-out infinite alternate;
         }
