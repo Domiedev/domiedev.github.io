@@ -68,7 +68,8 @@
   <p class="subtext">Hopefully you have a common name</p>
   <p>
     Welcome to my portfolio.<br>
-    <span id="explosionTrigger" class="explosion-word">Explosion</span> coming soon...
+    <span id="explosionTrigger" class="explosion-word">Explosion</span>
+    <span id="explosionText">coming soon...</span>
   </p>
 
   <!-- Explosions left and right -->
@@ -104,44 +105,48 @@
 
     let explosionPlayed = false;
 
+    // Function to trigger the explosion
     function triggerExplosion() {
       const left = document.getElementById('explosion-left');
       const right = document.getElementById('explosion-right');
-      const explosionText = document.getElementById('explosionTrigger');
+      const explosionText = document.getElementById('explosionText');
+      const explosionTrigger = document.getElementById('explosionTrigger');
 
       // If explosion has been triggered before, change the text and reset
       if (explosionPlayed) {
-        explosionText.textContent = "Explosion already happened :)";
+        explosionText.textContent = "already happened :)";
       } else {
-        // Restart GIF by replacing the src
-        left.style.display = 'none';
-        right.style.display = 'none';
-
-        left.src = '';
-        right.src = '';
+        // First time explosion
+        explosionText.textContent = "already happened :)";
+        explosionPlayed = true;
+        left.style.display = 'block';
+        right.style.display = 'block';
 
         setTimeout(() => {
-          left.src = 'explosion.gif';
-          right.src = 'explosion.gif';
+          left.style.display = 'none';
+          right.style.display = 'none';
+        }, 2000); // Adjust this time to match your GIF duration
 
-          left.style.display = 'block';
-          right.style.display = 'block';
-
-          // Remove after 2 seconds
-          setTimeout(() => {
-            left.style.display = 'none';
-            right.style.display = 'none';
-          }, 2000);
-        }, 50); // Small delay to reset the gif
-
-        explosionPlayed = true;
+        // Change the explosion text to clickable
+        explosionTrigger.textContent = "Explosion";
       }
     }
 
-    document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
+    // Check if it's the first visit
+    if (!localStorage.getItem('explosionSeen')) {
+      // Display the explosion on the first visit
+      setTimeout(() => {
+        triggerExplosion();
+        localStorage.setItem('explosionSeen', 'true');
+      }, 5000); // Wait for 5 seconds before showing explosion
+    } else {
+      // If the explosion has already been seen
+      document.getElementById('explosionText').textContent = "already happened :)";
+      document.getElementById('explosionTrigger').textContent = "Explosion";
+    }
 
-    // Optional: auto explosion after 5s
-    setTimeout(triggerExplosion, 5000);
+    // Add event listener to trigger the explosion when clicked
+    document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
   </script>
 </body>
 </html>
