@@ -9,28 +9,23 @@
     body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 2rem; }
     h1 { color: #4CAF50; margin-bottom: 0.2rem; }
     .subtext { font-size: 0.9rem; color: #888; margin-top: 0; }
-    #explosion-video { display: none; max-width: 100%; margin-top: 20px; }
+    #explosion-gif { display: none; max-width: 100%; margin-top: 20px; }
     .explosion-word { color: #FF6F61; font-weight: bold; } /* Pastel red color */
   </style>
 </head>
 <body>
   <h1>Hello, <em>Your NAME</em>!</h1>
-  <p class="subtext">(imagine I guessed your name right a)</p>
+  <p class="subtext">(imagine I guessed your name right)</p>
   <p>Welcome to my portfolio. <span class="explosion-word">Explosion</span> coming soon...</p>
 
-  <!-- Explosion Video -->
-  <video id="explosion-video" src="explosion.mp4" autoplay muted loop="false" onended="this.style.display='none'">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Explosion GIF -->
+  <img id="explosion-gif" src="explosion.gif" alt="Explosion GIF" />
 
   <script>
-    // Show the video after 10 seconds (10,000 ms)
+    // Show the GIF after 5 seconds (5,000 ms)
     setTimeout(() => {
-      let video = document.getElementById('explosion-video');
-      video.style.display = 'block';
-
-      // Slow down the video by 50x
-      video.playbackRate = 0.2;
+      let gif = document.getElementById('explosion-gif');
+      gif.style.display = 'block';
     }, 5000);
   </script>
 </body>
