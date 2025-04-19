@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,50 +15,33 @@
       text-align: center;
       position: relative;
     }
-
     h1 {
       color: #4CAF50;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.2rem;
     }
-
     .subtext {
       font-size: 0.9rem;
       color: #888;
       margin-top: 0;
     }
-
+    #explosion-left,
+    #explosion-right {
+      position: absolute;
+      width: 100px;
+      display: none;
+      top: 40px;
+    }
+    #explosion-left {
+      left: -110px;
+    }
+    #explosion-right {
+      right: -110px;
+    }
     .explosion-word {
       color: #FF6F61;
       font-weight: bold;
+      cursor: pointer;
     }
-
-    #nameDisplay {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #f39c12;
-      display: inline-block;
-      margin-left: 8px;
-    }
-
-    .explosion-container {
-      position: relative;
-      height: 0; /* No height to avoid pushing layout */
-    }
-
-    .explosion-img {
-      position: absolute;
-      width: 70px;
-      top: -40px;
-    }
-
-    #explosion-left {
-      left: -100px;
-    }
-
-    #explosion-right {
-      right: -100px;
-    }
-
     .button {
       background-color: #4CAF50;
       color: white;
@@ -69,28 +53,30 @@
       border-radius: 5px;
       text-decoration: none;
     }
-
     .button:hover {
       background-color: #45a049;
     }
-
-    #button-container {
-      margin-top: 50px;
+    #nameDisplay {
+      font-weight: bold;
+      color: #333;
+      font-size: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <h1>Hello,<span id="nameDisplay">Your NAME</span>!</h1>
+  <h1>Hello, <span id="nameDisplay">Your NAME</span>!</h1>
   <p class="subtext">Hopefully you have a common name</p>
-  <p>Welcome to my portfolio.<br><span class="explosion-word">Explosion</span> coming soon...</p>
+  <p>
+    Welcome to my portfolio.<br>
+    <span class="explosion-word" id="explosionTrigger">Explosion</span> coming soon...
+  </p>
 
-  <div class="explosion-container">
-    <img id="explosion-left" class="explosion-img" src="explosion.gif" alt="Explosion Left" style="display:none;" />
-    <img id="explosion-right" class="explosion-img" src="explosion.gif" alt="Explosion Right" style="display:none;" />
-  </div>
+  <!-- Explosions left and right -->
+  <img id="explosion-left" src="explosion.gif" alt="Explosion Left" />
+  <img id="explosion-right" src="explosion.gif" alt="Explosion Right" />
 
   <!-- Buttons for Navigation -->
-  <div id="button-container">
+  <div style="margin-top: 40px;">
     <a href="about.html" class="button">About Me</a>
     <a href="content.html" class="button">Content</a>
     <a href="https://buymeacoffee.com/domiedevreal" class="button" target="_blank">Buy Me a Coffee</a>
@@ -116,16 +102,24 @@
 
     setInterval(updateName, 500);
 
-    // Show explosions after 5 seconds
-    setTimeout(() => {
-      document.getElementById('explosion-left').style.display = 'block';
-      document.getElementById('explosion-right').style.display = 'block';
+    const triggerExplosion = () => {
+      const left = document.getElementById('explosion-left');
+      const right = document.getElementById('explosion-right');
+      if (!left || !right) return;
+
+      left.style.display = 'block';
+      right.style.display = 'block';
 
       setTimeout(() => {
-        document.getElementById('explosion-left').remove();
-        document.getElementById('explosion-right').remove();
+        left.style.display = 'none';
+        right.style.display = 'none';
       }, 2000);
-    }, 5000);
+    };
+
+    document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
+
+    // Auto explosion after 5s (optional)
+    setTimeout(triggerExplosion, 5000);
   </script>
 </body>
 </html>
