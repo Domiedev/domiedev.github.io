@@ -25,18 +25,19 @@
         }
 
         .image-container img {
-            width: 400px; /* Increased the size of the image further */
+            width: 400px;
             height: auto;
-            margin-bottom: 20px; /* Added space between the image and text */
+            margin-bottom: 10px; /* Moved the text and button up closer to the image */
+            animation: jump 0.5s ease-in-out infinite alternate; /* Added jump animation */
         }
 
         .text {
             font-size: 18px;
             color: #333;
-            margin-bottom: 20px; /* Added space between the text and the button */
+            margin-bottom: 10px; /* Moved the text closer to the image */
         }
 
-        .next-button {
+        .next-button, .home-button {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
@@ -44,9 +45,10 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
 
-        .next-button:hover {
+        .next-button:hover, .home-button:hover {
             background-color: #45a049;
         }
 
@@ -67,6 +69,19 @@
                 width: 100%;
             }
         }
+
+        /* Jumping effect for the image */
+        @keyframes jump {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -80,6 +95,7 @@
         <span class="typing">"Hello, I am Domie. Welcome to my page!"</span>
     </div>
     <button class="next-button" onclick="nextText()">Next</button>
+    <button class="home-button" id="homeButton" style="display:none;" onclick="goToHomePage()">Take me to the homepage</button>
 </div>
 
 <script>
@@ -91,7 +107,7 @@
         "When I am not coding, I am usually playing video games.",
         "I am constantly learning new things.",
         "My goal is to create meaningful software that makes a difference.",
-        "Thanks for visiting my site, feel free to reach out if you want to connect!"
+        "Ok, that's all to know about me. Do you want to go back to the homepage?"
     ];
 
     let currentIndex = 0;
@@ -100,11 +116,18 @@
         currentIndex++;
         if (currentIndex >= textArray.length) {
             currentIndex = 0;  // Loop back to the first message
+            // Hide the "Next" button and show the "Take me to the homepage" button
+            document.querySelector('.next-button').style.display = 'none';
+            document.getElementById('homeButton').style.display = 'block';
         }
-        
+
         const speechBubble = document.getElementById('speech-bubble');
         // Remove the previous text and restart the animation
         speechBubble.innerHTML = `<span class="typing">"${textArray[currentIndex]}"</span>`;
+    }
+
+    function goToHomePage() {
+        window.location.href = "https://yourhomepage.com"; // Replace with your actual homepage URL
     }
 </script>
 
