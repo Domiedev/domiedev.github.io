@@ -22,12 +22,14 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      position: relative; /* Ensures the buttons stay in place */
     }
 
     .image-container img {
       width: 420px;
       height: auto;
       margin-bottom: 10px;
+      /* Prevent the image from shifting */
     }
 
     .text {
@@ -46,6 +48,8 @@
       cursor: pointer;
       font-size: 16px;
       margin-top: 5px;
+      position: absolute;
+      bottom: 20px; /* Keep buttons at the bottom of the content */
     }
 
     .next-button:hover,
@@ -133,15 +137,19 @@
 
       span.addEventListener("animationend", () => {
         image.classList.remove("jumping");
-        // Show the NEXT button after animation finishes
-        nextBtn.style.display = "block";
+        // Show the NEXT button after animation finishes, if not last text
+        if (!entry.last) {
+          nextBtn.style.display = "block";
+        }
       }, { once: true });
 
     } else {
       image.classList.remove("jumping");
       bubble.innerHTML = `<span>${entry.text}</span>`;
       // Show the NEXT button immediately for non-animated text
-      nextBtn.style.display = "block";
+      if (!entry.last) {
+        nextBtn.style.display = "block";
+      }
     }
   }
 
