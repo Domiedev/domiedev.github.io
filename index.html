@@ -102,30 +102,40 @@
 
     setInterval(updateName, 500);
 
+    let explosionPlayed = false;
+
     function triggerExplosion() {
       const left = document.getElementById('explosion-left');
       const right = document.getElementById('explosion-right');
+      const explosionText = document.getElementById('explosionTrigger');
 
-      // Restart GIF by replacing the src
-      left.style.display = 'none';
-      right.style.display = 'none';
+      // If explosion has been triggered before, change the text and reset
+      if (explosionPlayed) {
+        explosionText.textContent = "Explosion done.";
+      } else {
+        // Restart GIF by replacing the src
+        left.style.display = 'none';
+        right.style.display = 'none';
 
-      left.src = '';
-      right.src = '';
+        left.src = '';
+        right.src = '';
 
-      setTimeout(() => {
-        left.src = 'explosion.gif';
-        right.src = 'explosion.gif';
-
-        left.style.display = 'block';
-        right.style.display = 'block';
-
-        // Remove after 2 seconds
         setTimeout(() => {
-          left.style.display = 'none';
-          right.style.display = 'none';
-        }, 2000);
-      }, 50); // Small delay to reset the gif
+          left.src = 'explosion.gif';
+          right.src = 'explosion.gif';
+
+          left.style.display = 'block';
+          right.style.display = 'block';
+
+          // Remove after 2 seconds
+          setTimeout(() => {
+            left.style.display = 'none';
+            right.style.display = 'none';
+          }, 2000);
+        }, 50); // Small delay to reset the gif
+
+        explosionPlayed = true;
+      }
     }
 
     document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
