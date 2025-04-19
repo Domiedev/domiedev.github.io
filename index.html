@@ -1,40 +1,44 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Domie's Website</title>
-  <link rel="icon" href="favicon.png" type="image/png" /> <!-- Favicon addition -->
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     body {
       font-family: sans-serif;
       max-width: 600px;
       margin: auto;
       padding: 2rem;
-      text-align: center; /* Center content */
+      text-align: center;
     }
+
     h1 {
       color: #4CAF50;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
     }
+
     .subtext {
       font-size: 0.9rem;
       color: #888;
       margin-top: 0;
     }
+
     #explosion-gif {
       display: none;
       width: 100%;
-      max-width: 500px; /* Larger but responsive */
+      max-width: 500px;
       margin-top: 20px;
     }
+
     .explosion-word {
       color: #FF6F61;
       font-weight: bold;
     }
+
     .button {
-      background-color: #4CAF50; /* Green button */
+      background-color: #4CAF50;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -44,34 +48,65 @@
       border-radius: 5px;
       text-decoration: none;
     }
+
     .button:hover {
-      background-color: #45a049; /* Darker green on hover */
+      background-color: #45a049;
+    }
+
+    #nameDisplay {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #f39c12;
+      margin-bottom: 0.2rem;
+    }
+
+    #button-container {
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
-  <h1>Hello, <em>Your NAME</em>!</h1>
+  <div id="nameDisplay">Your NAME</div>
   <p class="subtext">(imagine I guessed your name right)</p>
-  <p>Welcome to my portfolio. <span class="explosion-word">Explosion</span> coming soon...</p>
+  <p>
+    Welcome to my portfolio.<br>
+    <span class="explosion-word">Explosion</span> coming soon...
+  </p>
 
-  <!-- Explosion GIF -->
   <img id="explosion-gif" src="explosion.gif" alt="Explosion GIF" />
 
   <!-- Buttons for Navigation -->
-  <div>
+  <div id="button-container">
     <a href="about.html" class="button">About Me</a>
     <a href="content.html" class="button">Content</a>
     <a href="https://buymeacoffee.com/domiedevreal" class="button" target="_blank">Buy Me a Coffee</a>
-    <a href="contact.html" class="button">Contact</a> <!-- Placeholder link for "Contact" -->
+    <a href="contact.html" class="button">Contact</a>
   </div>
 
   <script>
-    // Show the GIF after 5 seconds
+    // Name cycling
+    const names = [
+      "Liam", "Noah", "Oliver", "Elijah", "James", "William", "Benjamin", "Lucas", "Henry", "Theodore",
+      "Jack", "Levi", "Alexander", "Jackson", "Mateo", "Daniel", "Michael", "Mason", "Sebastian", "Ethan",
+      "Emma", "Olivia", "Ava", "Isabella", "Sophia", "Charlotte", "Amelia", "Mia", "Harper", "Evelyn",
+      "Abigail", "Emily", "Ella", "Elizabeth", "Camila", "Luna", "Sofia", "Avery", "Mila", "Aria",
+      "Scarlett", "Penelope", "Layla", "Chloe", "Victoria", "Madison", "Eleanor", "Grace", "Nora", "Riley"
+    ];
+
+    let currentName = 0;
+
+    function updateName() {
+      document.getElementById('nameDisplay').textContent = names[currentName];
+      currentName = (currentName + 1) % names.length;
+    }
+
+    setInterval(updateName, 500); // Change every 0.5 seconds
+
+    // Show explosion gif after 5 seconds
     setTimeout(() => {
       const gif = document.getElementById('explosion-gif');
       gif.style.display = 'block';
 
-      // Remove the GIF after 2.5 seconds (adjust to match your GIF duration)
       setTimeout(() => {
         gif.remove();
       }, 2000);
