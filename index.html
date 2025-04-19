@@ -112,40 +112,41 @@
       const explosionText = document.getElementById('explosionText');
       const explosionTrigger = document.getElementById('explosionTrigger');
 
-      // If explosion has been triggered before, change the text and reset
-      if (explosionPlayed) {
-        explosionText.textContent = "already happened :)";
-      } else {
-        // First time explosion
-        explosionText.textContent = "already happened :)";
-        explosionPlayed = true;
-      }
+      // Reset the GIF to show it from the start
+      left.style.display = 'none';
+      right.style.display = 'none';
+      
+      // Show the explosion again
+      setTimeout(() => {
+        left.style.display = 'block';
+        right.style.display = 'block';
+      }, 10); // Start the explosion with a tiny delay to trigger a "replay"
 
-      left.style.display = 'block';
-      right.style.display = 'block';
-
-      // Reset the explosion (hide and show again) when clicked
+      // Reset the explosion display after a few seconds
       setTimeout(() => {
         left.style.display = 'none';
         right.style.display = 'none';
       }, 2000); // Adjust this time to match your GIF duration
 
       // Change the explosion text to clickable after the first explosion
+      explosionText.textContent = "already happened :)";
       explosionTrigger.textContent = "Explosion";
     }
 
     // Check if it's the first visit
-    if (!localStorage.getItem('explosionSeen')) {
-      // Display the explosion on the first visit
-      setTimeout(() => {
-        triggerExplosion();
-        localStorage.setItem('explosionSeen', 'true');
-      }, 5000); // Wait for 5 seconds before showing explosion
-    } else {
-      // If the explosion has already been seen
-      document.getElementById('explosionText').textContent = "already happened :)";
-      document.getElementById('explosionTrigger').textContent = "Explosion";
-    }
+    setTimeout(() => {
+      if (!localStorage.getItem('explosionSeen')) {
+        // Display the explosion on the first visit
+        setTimeout(() => {
+          triggerExplosion();
+          localStorage.setItem('explosionSeen', 'true');
+        }, 5000); // Wait for 5 seconds before showing explosion
+      } else {
+        // If the explosion has already been seen
+        document.getElementById('explosionText').textContent = "already happened :)";
+        document.getElementById('explosionTrigger').textContent = "Explosion";
+      }
+    }, 500); // Wait a little bit after the page load to handle the first load
 
     // Add event listener to trigger the explosion when clicked
     document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
