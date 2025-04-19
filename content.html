@@ -19,7 +19,7 @@
     }
 
     #construction-gif {
-      width: 300px; /* Adjusted size of the gif */
+      width: 400px; /* Made the GIF a bit bigger */
       height: auto;
     }
 
@@ -28,35 +28,22 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #ffb3d9; /* Pastel pink color */
+      color: #ffb3d9; /* Pastel pink */
       font-size: 2rem;
       font-weight: bold;
       text-decoration: underline;
+      cursor: pointer;
     }
 
-    .back-button {
-      position: absolute;
-      bottom: 20px;
-      font-size: 1.2rem;
-      color: #4CAF50;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 20px;
-      background-color: transparent;
-      border: 2px solid #4CAF50;
-      border-radius: 5px;
-    }
-
-    .back-button:hover {
-      background-color: #4CAF50;
-      color: white;
+    /* Optional: Add a hover effect to indicate it's clickable */
+    .overlay-text:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
-  <!-- GIF and text overlay -->
+  <!-- GIF and clickable text -->
   <img id="construction-gif" src="construction.gif" alt="Under Construction" />
-  <a href="index.html" class="back-button">WIP - Go back</a> <!-- Button made clickable -->
-
+  <a href="index.html" class="overlay-text">WIP - Go Back</a> <!-- Clickable text on the GIF -->
 </body>
 </html>
