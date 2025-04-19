@@ -15,5 +15,13 @@
   <h1>Hello, *Your NAME!*</h1>
   <p class="subtext">(imagine I guessed your name right)</p>
   <p>Welcome to my piss website. Explosion coming soon...</p>
+  <img id="explosion" src="explosion.gif" style="display: none; max-width: 100%;" alt="Explosion GIF" />
+<script>
+  // Show the GIF after 10 seconds (10,000 ms)
+  setTimeout(() => {
+    document.getElementById('explosion').style.display = 'block';
+  }, 10000);
+</script>
+
 </body>
 </html>
