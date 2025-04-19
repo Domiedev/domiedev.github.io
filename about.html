@@ -27,14 +27,13 @@
         .image-container img {
             width: 400px;
             height: auto;
-            margin-bottom: 10px; /* Moved the text and button up closer to the image */
-            animation: jump 0.5s ease-in-out infinite alternate; /* Added jump animation */
+            margin-bottom: 10px;
         }
 
         .text {
             font-size: 18px;
             color: #333;
-            margin-bottom: 10px; /* Moved the text closer to the image */
+            margin-bottom: 5px; /* Moved the text even closer to the image */
         }
 
         .next-button, .home-button {
@@ -45,7 +44,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
+            margin-top: 5px; /* Moved the button up closer */
         }
 
         .next-button:hover, .home-button:hover {
@@ -70,7 +69,7 @@
             }
         }
 
-        /* Jumping effect for the image */
+        /* Jumping effect for the image (only active during text animation) */
         @keyframes jump {
             0% {
                 transform: translateY(0);
@@ -82,12 +81,17 @@
                 transform: translateY(0);
             }
         }
+
+        /* Only trigger jump animation on typing */
+        .image-container.typing img {
+            animation: jump 0.5s ease-in-out infinite alternate;
+        }
     </style>
 </head>
 <body>
 
 <div class="content">
-    <div class="image-container">
+    <div class="image-container" id="imageContainer">
         <img src="ImageTalking.png" alt="Your Image">
     </div>
     <div class="text" id="speech-bubble">
@@ -122,12 +126,22 @@
         }
 
         const speechBubble = document.getElementById('speech-bubble');
+        const imageContainer = document.getElementById('imageContainer');
         // Remove the previous text and restart the animation
         speechBubble.innerHTML = `<span class="typing">"${textArray[currentIndex]}"</span>`;
+
+        // Trigger image "jump" only during typing animation
+        imageContainer.classList.add('typing');
+        
+        // After typing animation ends, remove the "jumping" effect
+        const typingElement = document.querySelector('.typing');
+        typingElement.addEventListener('animationend', () => {
+            imageContainer.classList.remove('typing');
+        });
     }
 
     function goToHomePage() {
-        window.location.href = "https://yourhomepage.com"; // Replace with your actual homepage URL
+        window.location.href = "https://domiedev.github.io/"; // Link to your GitHub Pages homepage
     }
 </script>
 
