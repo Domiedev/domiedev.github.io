@@ -12,6 +12,7 @@
       max-width: 600px;
       margin: auto;
       padding: 2rem;
+      text-align: center; /* Center content */
     }
     h1 {
       color: #4CAF50;
@@ -32,6 +33,20 @@
       color: #FF6F61;
       font-weight: bold;
     }
+    .button {
+      background-color: #4CAF50; /* Green button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
   </style>
 </head>
 <body>
@@ -41,6 +56,14 @@
 
   <!-- Explosion GIF -->
   <img id="explosion-gif" src="explosion.gif" alt="Explosion GIF" />
+
+  <!-- Buttons for Navigation -->
+  <div>
+    <a href="about.html" class="button">About Me</a>
+    <a href="content.html" class="button">Content</a>
+    <a href="https://www.buymeacoffee.com" class="button" target="_blank">Buy Me a Coffee</a>
+    <a href="contact.html" class="button">Contact</a> <!-- Placeholder link for "Contact" -->
+  </div>
 
   <script>
     // Show the GIF after 5 seconds
