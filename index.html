@@ -26,6 +26,11 @@
     setTimeout(() => {
       let gif = document.getElementById('explosion-gif');
       gif.style.display = 'block';  // Show the GIF
+
+      // Hide the GIF after 3 seconds (adjust this to your GIF duration)
+      setTimeout(() => {
+        gif.style.display = 'none';
+      }, 3000);
     }, 5000);
   </script>
 </body>
