@@ -18,6 +18,7 @@
     h1 {
       color: #4CAF50;
       margin-bottom: 0.2rem;
+      font-size: 2rem;
     }
     .subtext {
       font-size: 0.9rem;
@@ -28,8 +29,7 @@
     #explosion-right {
       position: absolute;
       width: 100px;
-      display: none;
-      top: 40px;
+      top: 20px;
     }
     #explosion-left {
       left: -110px;
@@ -57,9 +57,9 @@
       background-color: #45a049;
     }
     #nameDisplay {
+      color: #4CAF50;
+      font-size: 2rem;
       font-weight: bold;
-      color: #333;
-      font-size: 1.5rem;
     }
   </style>
 </head>
@@ -72,8 +72,8 @@
   </p>
 
   <!-- Explosions left and right -->
-  <img id="explosion-left" src="explosion.gif" alt="Explosion Left" />
-  <img id="explosion-right" src="explosion.gif" alt="Explosion Right" />
+  <img id="explosion-left" src="explosion.gif" alt="Explosion Left" style="display: none;" />
+  <img id="explosion-right" src="explosion.gif" alt="Explosion Right" style="display: none;" />
 
   <!-- Buttons for Navigation -->
   <div style="margin-top: 40px;">
@@ -102,23 +102,35 @@
 
     setInterval(updateName, 500);
 
-    const triggerExplosion = () => {
+    function triggerExplosion() {
       const left = document.getElementById('explosion-left');
       const right = document.getElementById('explosion-right');
-      if (!left || !right) return;
 
-      left.style.display = 'block';
-      right.style.display = 'block';
+      // Restart GIF by replacing the src
+      left.style.display = 'none';
+      right.style.display = 'none';
+
+      left.src = '';
+      right.src = '';
 
       setTimeout(() => {
-        left.style.display = 'none';
-        right.style.display = 'none';
-      }, 2000);
-    };
+        left.src = 'explosion.gif';
+        right.src = 'explosion.gif';
+
+        left.style.display = 'block';
+        right.style.display = 'block';
+
+        // Remove after 2 seconds
+        setTimeout(() => {
+          left.style.display = 'none';
+          right.style.display = 'none';
+        }, 2000);
+      }, 50); // Small delay to reset the gif
+    }
 
     document.getElementById('explosionTrigger').addEventListener('click', triggerExplosion);
 
-    // Auto explosion after 5s (optional)
+    // Optional: auto explosion after 5s
     setTimeout(triggerExplosion, 5000);
   </script>
 </body>
