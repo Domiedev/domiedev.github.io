@@ -18,15 +18,19 @@
   <p class="subtext">(imagine I guessed your name right)</p>
   <p>Welcome to my portfolio. <span class="explosion-word">Explosion</span> coming soon...</p>
 
-  <!-- Explosion Video (with controls to play only once) -->
-  <video id="explosion-video" src="explosion.mp4" autoplay muted loop="false" onended="this.style.display='none'" >
+  <!-- Explosion Video -->
+  <video id="explosion-video" src="explosion.mp4" autoplay muted loop="false" onended="this.style.display='none'">
     Your browser does not support the video tag.
   </video>
 
   <script>
     // Show the video after 10 seconds (10,000 ms)
     setTimeout(() => {
-      document.getElementById('explosion-video').style.display = 'block';
+      let video = document.getElementById('explosion-video');
+      video.style.display = 'block';
+
+      // Slow down the video by 50x
+      video.playbackRate = 0.02;
     }, 10000);
   </script>
 </body>
