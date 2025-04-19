@@ -119,17 +119,19 @@
         // First time explosion
         explosionText.textContent = "already happened :)";
         explosionPlayed = true;
-        left.style.display = 'block';
-        right.style.display = 'block';
-
-        setTimeout(() => {
-          left.style.display = 'none';
-          right.style.display = 'none';
-        }, 2000); // Adjust this time to match your GIF duration
-
-        // Change the explosion text to clickable
-        explosionTrigger.textContent = "Explosion";
       }
+
+      left.style.display = 'block';
+      right.style.display = 'block';
+
+      // Reset the explosion (hide and show again) when clicked
+      setTimeout(() => {
+        left.style.display = 'none';
+        right.style.display = 'none';
+      }, 2000); // Adjust this time to match your GIF duration
+
+      // Change the explosion text to clickable after the first explosion
+      explosionTrigger.textContent = "Explosion";
     }
 
     // Check if it's the first visit
