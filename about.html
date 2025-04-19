@@ -57,7 +57,7 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid black;
-            animation: typing 1.5s steps(30) 1s forwards, blink-caret 0.75s step-end infinite;
+            animation: typing 1.5s steps(30) forwards, blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -108,7 +108,9 @@
         if (currentIndex >= textArray.length) {
             currentIndex = 0;  // Loop back to the first message
         }
+        
         const speechBubble = document.getElementById('speech-bubble');
+        // Remove the previous text and restart the animation
         speechBubble.innerHTML = `<span class="typing">"${textArray[currentIndex]}"</span>`;
     }
 </script>
