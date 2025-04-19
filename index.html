@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,11 +59,16 @@
       color: #4CAF50;
       font-size: 2rem;
       font-weight: bold;
+      display: block;
+      margin-top: 0.2rem;
     }
   </style>
 </head>
 <body>
-  <h1>Hello, <span id="nameDisplay">Your NAME</span>!</h1>
+  <h1>
+    Hello,<br>
+    <span id="nameDisplay"></span>
+  </h1>
   <p class="subtext">Hopefully you have a common name</p>
   <p>
     Welcome to my portfolio.<br>
@@ -95,21 +99,21 @@
 
     let currentName = 0;
     const nameDisplay = document.getElementById('nameDisplay');
+    nameDisplay.textContent = names[currentName]; // Show first name immediately
 
     function updateName() {
-      nameDisplay.textContent = names[currentName];
       currentName = (currentName + 1) % names.length;
+      nameDisplay.textContent = names[currentName];
     }
 
     setInterval(updateName, 500);
 
-    const gifDuration = 2000; // duration of the gif in milliseconds
+    const gifDuration = 2000;
 
     function playExplosion() {
       const left = document.getElementById('explosion-left');
       const right = document.getElementById('explosion-right');
 
-      // Reset GIFs by changing src
       left.style.display = 'none';
       right.style.display = 'none';
       left.src = '';
@@ -137,7 +141,7 @@
       setTimeout(() => {
         document.getElementById('explosionText').textContent = "already happened :)";
         document.getElementById('explosionTrigger').textContent = "Explosion";
-      }, gifDuration + 500); // Text update 0.5s after gif ends
+      }, gifDuration + 500);
     }, 5000);
 
     document.getElementById('explosionTrigger').addEventListener('click', () => {
