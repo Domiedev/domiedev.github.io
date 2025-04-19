@@ -6,31 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Domie's Website</title>
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 2rem; }
-    h1 { color: #4CAF50; margin-bottom: 0.2rem; }
-    .subtext { font-size: 0.9rem; color: #888; margin-top: 0; }
-    #explosion-gif { display: none; max-width: 100%; margin-top: 20px; }
-    .explosion-word { color: #FF6F61; font-weight: bold; } /* Pastel red color */
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h1 {
+      color: #4CAF50;
+      margin-bottom: 0.2rem;
+    }
+    .subtext {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 0;
+    }
+    #explosion-gif {
+      display: none;
+      width: 100%;
+      max-width: 500px; /* Larger but responsive */
+      margin-top: 20px;
+    }
+    .explosion-word {
+      color: #FF6F61;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>Hello, <em>Your NAME</em>!</h1>
-  <p class="subtext">(imagine I guessed your name right lol)</p>
+  <p class="subtext">(imagine I guessed your name right)</p>
   <p>Welcome to my portfolio. <span class="explosion-word">Explosion</span> coming soon...</p>
 
   <!-- Explosion GIF -->
   <img id="explosion-gif" src="explosion.gif" alt="Explosion GIF" />
 
   <script>
-    // Show the GIF after 5 seconds (5,000 ms)
+    // Show the GIF after 5 seconds
     setTimeout(() => {
-      let gif = document.getElementById('explosion-gif');
-      gif.style.display = 'block';  // Show the GIF
+      const gif = document.getElementById('explosion-gif');
+      gif.style.display = 'block';
 
-      // Hide the GIF after 3 seconds (adjust this to your GIF duration)
+      // Remove the GIF after 2.5 seconds (adjust to match your GIF duration)
       setTimeout(() => {
-        gif.style.display = 'none';
-      }, 300);
+        gif.remove();
+      }, 2500);
     }, 5000);
   </script>
 </body>
