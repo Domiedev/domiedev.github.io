@@ -3,69 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content</title>
+  <title>Content - WIP</title>
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
-      background-color: #f0f0f0;
-    }
-    .content-wrapper {
-      position: relative;
-      display: inline-block;
-      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      background-color: #f4f4f9;
+      text-align: center;
+      position: relative;
     }
+
     #construction-gif {
-      width: 100%;
+      width: 200px; /* Adjusted size of the gif */
       height: auto;
     }
+
     .overlay-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      color: pastelpink;
       font-size: 2rem;
-      color: #FF6F61;
       font-weight: bold;
       text-decoration: underline;
-      font-family: sans-serif;
-      background-color: rgba(255, 255, 255, 0.6); /* Light background for better visibility */
-      padding: 10px;
     }
-    .go-back-button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
+
+    .back-button {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2rem;
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
       padding: 10px 20px;
-      font-size: 1rem;
-      margin-top: 20px;
-      cursor: pointer;
+      background-color: transparent;
+      border: 2px solid #4CAF50;
       border-radius: 5px;
     }
-    .go-back-button:hover {
-      background-color: #45a049;
+
+    .back-button:hover {
+      background-color: #4CAF50;
+      color: white;
     }
   </style>
 </head>
 <body>
+  <!-- GIF and text overlay -->
+  <img id="construction-gif" src="construction.gif" alt="Under Construction" />
+  <div class="overlay-text">WIP - Go back</div>
 
-  <div class="content-wrapper">
-    <!-- Display the construction GIF -->
-    <img id="construction-gif" src="construction.gif" alt="Construction GIF">
-
-    <!-- Overlay text -->
-    <div class="overlay-text">WIP - <span onclick="goBack()" style="cursor: pointer;">Go Back</span></div>
-  </div>
-
-  <script>
-    // Function to go back to the main page
-    function goBack() {
-      window.location.href = "index.html"; // Go back to the main page
-    }
-  </script>
-
+  <!-- Go back button -->
+  <a href="index.html" class="back-button">Go Back</a>
 </body>
 </html>
