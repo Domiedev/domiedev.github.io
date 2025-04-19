@@ -63,6 +63,20 @@
       margin-top: 0.2rem;
     }
   </style>
+  
+  <!-- Script to remove '.html' from URLs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll("a");
+      links.forEach(link => {
+        let href = link.getAttribute("href");
+        if (href.endsWith(".html")) {
+          link.setAttribute("href", href.replace(".html", ""));
+        }
+      });
+    });
+  </script>
+
 </head>
 <body>
   <h1>
@@ -82,10 +96,10 @@
 
   <!-- Buttons for Navigation -->
   <div style="margin-top: 40px;">
-    <a href="about.html" class="button">About Me</a>
-    <a href="content.html" class="button">Content</a>
+    <a href="about" class="button">About Me</a>
+    <a href="content" class="button">Content</a>
     <a href="https://buymeacoffee.com/domiedevreal" class="button" target="_blank">Buy Me a Coffee</a>
-    <a href="contact.html" class="button">Contact</a>
+    <a href="contact" class="button">Contact</a>
   </div>
 
   <script>
