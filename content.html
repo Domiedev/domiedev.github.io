@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    .content-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 100vh;
+    }
+    #construction-gif {
+      width: 100%;
+      height: auto;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: #FF6F61;
+      font-weight: bold;
+      text-decoration: underline;
+      font-family: sans-serif;
+      background-color: rgba(255, 255, 255, 0.6); /* Light background for better visibility */
+      padding: 10px;
+    }
+    .go-back-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .go-back-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-wrapper">
+    <!-- Display the construction GIF -->
+    <img id="construction-gif" src="construction.gif" alt="Construction GIF">
+
+    <!-- Overlay text -->
+    <div class="overlay-text">WIP - <span onclick="goBack()" style="cursor: pointer;">Go Back</span></div>
+  </div>
+
+  <script>
+    // Function to go back to the main page
+    function goBack() {
+      window.location.href = "index.html"; // Go back to the main page
+    }
+  </script>
+
+</body>
+</html>
