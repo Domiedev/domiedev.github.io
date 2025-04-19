@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .image-container {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .image-container img {
+            width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: 0;
+            left: 120px;
+            width: 300px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            color: #333;
+        }
+
+        .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .next-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="image-container">
+        <img src="ImageTalking.png" alt="Your Image">
+        <div class="speech-bubble" id="speech-bubble">
+            <!-- Placeholder text will appear here -->
+            "Hello, I am Domie. Welcome to my page!"
+        </div>
+    </div>
+    <div>
+        <button class="next-button" onclick="nextText()">Next</button>
+    </div>
+</div>
+
+<script>
+    const textArray = [
+        "Hello, I am Domie. Welcome to my page!",
+        "I am a passionate developer.",
+        "I enjoy working on projects that challenge me.",
+        "I love creating fun and interactive experiences.",
+        "When I am not coding, I am usually playing video games.",
+        "I am constantly learning new things.",
+        "My goal is to create meaningful software that makes a difference.",
+        "Thanks for visiting my site, feel free to reach out if you want to connect!"
+    ];
+
+    let currentIndex = 0;
+
+    function nextText() {
+        currentIndex++;
+        if (currentIndex >= textArray.length) {
+            currentIndex = 0;  // Loop back to the first message
+        }
+        document.getElementById('speech-bubble').innerText = `"${textArray[currentIndex]}"`;
+    }
+</script>
+
+</body>
+</html>
