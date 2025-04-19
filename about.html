@@ -25,7 +25,7 @@
         }
 
         .image-container img {
-            width: 300px; /* Increased the size of the image */
+            width: 400px; /* Increased the size of the image further */
             height: auto;
             margin-bottom: 20px; /* Added space between the image and text */
         }
@@ -56,8 +56,7 @@
             width: 0;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid black;
-            animation: typing 1.5s steps(30) forwards, blink-caret 0.75s step-end infinite;
+            animation: typing 1.5s steps(30) forwards;
         }
 
         @keyframes typing {
@@ -66,12 +65,6 @@
             }
             to {
                 width: 100%;
-            }
-        }
-
-        @keyframes blink-caret {
-            50% {
-                border-color: transparent;
             }
         }
     </style>
