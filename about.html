@@ -25,14 +25,13 @@
         }
 
         .image-container img {
-            width: 400px;
+            width: 420px;
             height: auto;
             margin-bottom: 10px;
-            animation: jump 0.5s ease-in-out infinite alternate; /* This jump animation is default for now */
         }
 
         .text {
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
             margin-bottom: 5px;
         }
@@ -52,99 +51,95 @@
             background-color: #45a049;
         }
 
-        /* Typing animation */
         .typing {
             display: inline-block;
-            width: 0;
             white-space: nowrap;
             overflow: hidden;
-            animation: typing 1.5s steps(30) forwards;
+            border-right: 0.15em solid orange;
+            animation: typing 1.2s steps(40) forwards;
         }
 
         @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+            from { width: 0 }
+            to { width: 100% }
         }
 
-        /* Jumping effect for the image */
         @keyframes jump {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
         }
 
-        /* Jumping effect for the image (only active during text animation) */
-        .image-container.typing img {
+        .jumping {
             animation: jump 0.5s ease-in-out infinite alternate;
         }
     </style>
 </head>
 <body>
-
 <div class="content">
-    <div class="image-container" id="imageContainer">
-        <img src="ImageTalking.png" alt="Your Image">
+    <div class="image-container">
+        <img src="ImageTalking.png" id="talkingImage">
     </div>
     <div class="text" id="speech-bubble">
-        <!-- Placeholder text will appear here -->
-        <span class="typing">"Hello, I am Domie. Welcome to my page!"</span>
+        <span class="typing">Hello guy, My Name is Domie.</span>
     </div>
-    <button class="next-button" onclick="nextText()">Next</button>
-    <button class="home-button" id="homeButton" style="display:none;" onclick="goToHomePage()">Take me to the homepage</button>
+    <button class="next-button" id="nextBtn" onclick="nextText()">NEXT</button>
+    <button class="home-button" id="homeBtn" style="display:none;" onclick="goToHomePage()">ok ok i will</button>
 </div>
 
 <script>
-    const textArray = [
-        "Hello, I am Domie. YES i can talk bro!",
-        "I am a passionate developer.",
-        "I enjoy working on projects that challenge me.",
-        "I love creating fun and interactive experiences.",
-        "When I am not coding, I am usually playing video games.",
-        "I am constantly learning new things.",
-        "My goal is to create meaningful software that makes a difference.",
-        "Ok, that's all to know about me. Do you want to go back to the homepage?"
+    const texts = [
+        { text: "Hello guy, My Name is Domie.", animate: true },
+        { text: "YES i can talk bro", animate: true },
+        { text: "YES this is a Picture of me", animate: true },
+        { text: "You ask what i like to do?", animate: true, button: "NO?" },
+        { text: "Shut up", animate: false },
+        { text: "I enjoy creating Game, using photoshop making YouTube Content etc", animate: true },
+        { text: "I love to constantly learn new Things", animate: true },
+        { text: "oh also I am 20 Years old, And currently Living in Munich Germany :p", animate: true },
+        { text: "Thats it. Stop Talking to me", animate: true },
+        { text: "Stop.", animate: true },
+        { text: "Stop bro seriouslyy!", animate: true },
+        { text: "youre pmo stop ts", animate: true },
+        { text: "GO BACK TO THE HOMEPAGE BRO!", animate: true, last: true }
     ];
 
     let currentIndex = 0;
 
     function nextText() {
         currentIndex++;
-        if (currentIndex >= textArray.length) {
-            currentIndex = 0;  // Loop back to the first message
-            // Hide the "Next" button and show the "Take me to the homepage" button
-            document.querySelector('.next-button').style.display = 'none';
-            document.getElementById('homeButton').style.display = 'block';
+        if (currentIndex >= texts.length) return;
+
+        const entry = texts[currentIndex];
+        const bubble = document.getElementById("speech-bubble");
+        const image = document.getElementById("talkingImage");
+        const nextBtn = document.getElementById("nextBtn");
+        const homeBtn = document.getElementById("homeBtn");
+
+        if (entry.button) nextBtn.textContent = entry.button;
+        else nextBtn.textContent = "NEXT";
+
+        if (entry.last) {
+            nextBtn.style.display = "none";
+            homeBtn.style.display = "block";
         }
 
-        const speechBubble = document.getElementById('speech-bubble');
-        const imageContainer = document.getElementById('imageContainer');
-        // Remove the previous text and restart the animation
-        speechBubble.innerHTML = `<span class="typing">"${textArray[currentIndex]}"</span>`;
-
-        // Trigger image "jump" only during typing animation
-        imageContainer.classList.add('typing');
-        
-        // After typing animation ends, remove the "jumping" effect
-        const typingElement = document.querySelector('.typing');
-        typingElement.addEventListener('animationend', () => {
-            imageContainer.classList.remove('typing');
-        });
+        if (entry.animate) {
+            image.classList.add("jumping");
+            bubble.innerHTML = `<span class="typing">${entry.text}</span>`;
+            const span = bubble.querySelector(".typing");
+            span.addEventListener("animationend", () => {
+                image.classList.remove("jumping");
+            }, { once: true });
+        } else {
+            image.classList.remove("jumping");
+            bubble.innerHTML = `<span>${entry.text}</span>`;
+        }
     }
 
     function goToHomePage() {
-        window.location.href = "https://domiedev.github.io/"; // Link to your GitHub Pages homepage
+        window.location.href = "https://domiedev.github.io/";
     }
 </script>
-
 </body>
 </html>
