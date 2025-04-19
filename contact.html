@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content - WIP</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      text-align: center;
+      position: relative;
+    }
+
+    #construction-gif {
+      width: 400px; /* Made the GIF a bit bigger */
+      height: auto;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffb3d9; /* Pastel pink */
+      font-size: 2rem;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Optional: Add a hover effect to indicate it's clickable */
+    .overlay-text:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- GIF and clickable text -->
+  <img id="construction-gif" src="construction.gif" alt="Under Construction" />
+  <a href="index.html" class="overlay-text">WIP - Go Back</a> <!-- Clickable text on the GIF -->
+</body>
+</html>
