@@ -30,7 +30,6 @@
       position: absolute;
       width: 100px;
       top: 20px;
-      display: none;
     }
     #explosion-left {
       left: -110px;
@@ -74,8 +73,8 @@
   </p>
 
   <!-- Explosions left and right -->
-  <img id="explosion-left" src="explosion.gif" alt="Explosion Left" />
-  <img id="explosion-right" src="explosion.gif" alt="Explosion Right" />
+  <img id="explosion-left" src="explosion.gif" alt="Explosion Left" style="display: none;" />
+  <img id="explosion-right" src="explosion.gif" alt="Explosion Right" style="display: none;" />
 
   <!-- Buttons for Navigation -->
   <div style="margin-top: 40px;">
@@ -94,50 +93,56 @@
       "Scarlett", "Penelope", "Layla", "Chloe", "Victoria", "Madison", "Eleanor", "Grace", "Nora", "Riley"
     ];
 
-    const nameDisplay = document.getElementById('nameDisplay');
     let currentName = 0;
-    setInterval(() => {
+    const nameDisplay = document.getElementById('nameDisplay');
+
+    function updateName() {
       nameDisplay.textContent = names[currentName];
       currentName = (currentName + 1) % names.length;
-    }, 500);
+    }
 
-    const explosionLeft = document.getElementById('explosion-left');
-    const explosionRight = document.getElementById('explosion-right');
-    const explosionText = document.getElementById('explosionText');
-    const explosionTrigger = document.getElementById('explosionTrigger');
+    setInterval(updateName, 500);
+
+    const gifDuration = 2000; // duration of the gif in milliseconds
 
     function playExplosion() {
-      // Reload GIFs by replacing src
-      explosionLeft.style.display = 'none';
-      explosionRight.style.display = 'none';
+      const left = document.getElementById('explosion-left');
+      const right = document.getElementById('explosion-right');
 
-      // Force restart by changing src
-      explosionLeft.src = '';
-      explosionRight.src = '';
-      void explosionLeft.offsetWidth; // trigger reflow
-      void explosionRight.offsetWidth;
-      explosionLeft.src = 'explosion.gif';
-      explosionRight.src = 'explosion.gif';
+      // Reset GIFs by changing src
+      left.style.display = 'none';
+      right.style.display = 'none';
+      left.src = '';
+      right.src = '';
 
       setTimeout(() => {
-        explosionLeft.style.display = 'block';
-        explosionRight.style.display = 'block';
+        left.src = 'explosion.gif';
+        right.src = 'explosion.gif';
+        left.style.display = 'block';
+        right.style.display = 'block';
       }, 10);
 
       setTimeout(() => {
-        explosionLeft.style.display = 'none';
-        explosionRight.style.display = 'none';
-      }, 2000);
+        left.style.display = 'none';
+        right.style.display = 'none';
+      }, gifDuration);
     }
 
-    // First automatic explosion after 5s
+    let explosionPlayed = false;
+
     setTimeout(() => {
       playExplosion();
-      explosionText.textContent = "already happened :)";
+      explosionPlayed = true;
+
+      setTimeout(() => {
+        document.getElementById('explosionText').textContent = "already happened :)";
+        document.getElementById('explosionTrigger').textContent = "Explosion";
+      }, gifDuration + 500); // Text update 0.5s after gif ends
     }, 5000);
 
-    // Clicking "Explosion" plays explosion again
-    explosionTrigger.addEventListener('click', playExplosion);
+    document.getElementById('explosionTrigger').addEventListener('click', () => {
+      playExplosion();
+    });
   </script>
 </body>
 </html>
