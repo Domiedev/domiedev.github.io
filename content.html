@@ -1,49 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content - WIP</title>
+  <title>Content Auswahl</title>
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 2rem; /* Etwas Abstand zum Rand */
       display: flex;
+      flex-direction: column; /* Elemente untereinander anordnen */
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Mindesthöhe, um Zentrierung zu ermöglichen */
       background-color: #f4f4f9;
       text-align: center;
-      position: relative;
     }
 
-    #construction-gif {
-      width: 400px; /* Made the GIF a bit bigger */
-      height: auto;
+    h2 {
+        color: #333;
+        margin-bottom: 2rem; /* Abstand unter der Überschrift */
     }
 
-    .overlay-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ffb3d9; /* Pastel pink */
-      font-size: 2rem;
-      font-weight: bold;
-      text-decoration: underline;
-      cursor: pointer;
+    .image-container {
+      display: flex; /* Bilder nebeneinander anordnen */
+      justify-content: center; /* Bilder horizontal zentrieren */
+      align-items: center; /* Bilder vertikal zentrieren (falls unterschiedlich hoch) */
+      gap: 2rem; /* Abstand zwischen den Bildern */
+      flex-wrap: wrap; /* Bei schmalen Bildschirmen umbrechen */
     }
 
-    /* Optional: Add a hover effect to indicate it's clickable */
-    .overlay-text:hover {
-      opacity: 0.8;
+    .image-link img {
+      display: block; /* Verhindert zusätzlichen Leerraum unter dem Bild */
+      width: 200px; /* Beispielbreite - anpassen nach Bedarf */
+      height: auto; /* Höhe automatisch anpassen */
+      border: 2px solid transparent; /* Optional: Rahmen vorbereiten */
+      border-radius: 8px; /* Abgerundete Ecken */
+      transition: transform 0.3s ease, border-color 0.3s ease; /* Übergang für Hover-Effekt */
     }
+
+    .image-link:hover img {
+      transform: scale(1.05); /* Leicht vergrößern beim Hover */
+      border-color: #4CAF50; /* Rahmenfarbe beim Hover ändern */
+    }
+
+    /* Optional: Style für den Zurück-Button, falls gewünscht */
+    .back-button {
+        margin-top: 3rem; /* Abstand nach oben */
+        background-color: #888; /* Andere Farbe als Hauptbuttons */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #666;
+    }
+
   </style>
 </head>
 <body>
-  <!-- GIF and clickable text -->
-  <img id="construction-gif" src="construction.gif" alt="Under Construction" />
-  <a href="index.html" class="overlay-text">WIP - Go Back</a> <!-- Clickable text on the GIF -->
-</body>
+
+  <h2>Meine Projekte:</h2> <div class="image-container">
+    <a href="https://domiedev.github.io/BuggedOut/" target="_blank" rel="noopener noreferrer" class="image-link">
+      <img src="BUGGED-OUT.png" alt="Link zum BuggedOut Projekt" />
+    </a>
+
+    <a href="https://domiedev.github.io/DomieTimer/" target="_blank" rel="noopener noreferrer" class="image-link">
+      <img src="TIMER.png" alt="Link zum DomieTimer Projekt" />
+    </a>
+  </div>
+
+  <a href="index" class="back-button">Zurück zur Startseite</a>
+   </body>
 </html>
