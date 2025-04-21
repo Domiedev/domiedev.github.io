@@ -10,9 +10,9 @@
       margin: 0;
       padding: 2rem; /* Etwas Abstand zum Rand */
       display: flex;
-      flex-direction: column; /* Elemente untereinander anordnen */
-      justify-content: center;
-      align-items: center;
+      flex-direction: column; /* Hauptausrichtung der Seite ist vertikal */
+      justify-content: center; /* Vertikal zentrieren */
+      align-items: center; /* Horizontale Zentrierung für den Body-Inhalt */
       min-height: 100vh; /* Mindesthöhe, um Zentrierung zu ermöglichen */
       background-color: #f4f4f9;
       text-align: center;
@@ -20,41 +20,41 @@
 
     h2 {
         color: #333;
-        margin-bottom: 2rem; /* Abstand unter der Überschrift */
+        margin-bottom: 2rem; /* Wieder etwas mehr Abstand nach unten */
     }
 
+    /* Container für die Projekt-Bilder */
     .image-container {
-      display: flex; /* Bilder nebeneinander anordnen */
-      justify-content: center; /* Bilder horizontal zentrieren */
-      align-items: center; /* Bilder vertikal zentrieren (wichtig, wenn sie unterschiedlich hoch sind) */
-      gap: 2rem; /* Abstand zwischen den Bildern */
-      flex-wrap: wrap; /* Bei schmalen Bildschirmen umbrechen */
+      display: flex;
+      flex-direction: column; /* Elemente untereinander anordnen */
+      align-items: center; /* Zentriert die Elemente horizontal */
+      gap: 1.5rem; /* Vertikaler Abstand zwischen den Projekt-Bildern */
     }
 
     /* Standard-Styling für alle Projekt-Bilder */
     .image-link img {
-      display: block; /* Verhindert zusätzlichen Leerraum unter dem Bild */
-      width: 200px; /* Standardbreite für Bilder */
-      height: auto; /* Höhe automatisch anpassen */
-      border: 2px solid transparent; /* Optional: Rahmen vorbereiten */
-      border-radius: 8px; /* Abgerundete Ecken */
-      transition: transform 0.3s ease, border-color 0.3s ease; /* Übergang für Hover-Effekt */
+      display: block;
+      width: 200px; /* Standardbreite */
+      height: auto;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     /* Spezifisches Styling für das Bugged Out Bild */
     #bugged-out-image {
-      width: 400px; /* Größere Breite nur für dieses Bild - Anpassen nach Bedarf! */
+      width: 250px; /* Größere Breite beibehalten */
     }
 
     .image-link:hover img {
-      transform: scale(1.05); /* Leicht vergrößern beim Hover */
-      border-color: #4CAF50; /* Rahmenfarbe beim Hover ändern */
+      transform: scale(1.05);
+      border-color: #4CAF50;
     }
 
-    /* Optional: Style für den Zurück-Button, falls gewünscht */
+    /* Style für den Zurück-Button */
     .back-button {
-        margin-top: 3rem; /* Abstand nach oben */
-        background-color: #888; /* Andere Farbe als Hauptbuttons */
+        margin-top: 3rem;
+        background-color: #888;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -73,7 +73,7 @@
 </head>
 <body>
 
-  <h2></h2>
+  <h2>Meine Projekte:</h2>
 
   <div class="image-container">
     <a href="https://domiedev.github.io/BuggedOut/" target="_blank" rel="noopener noreferrer" class="image-link">
@@ -81,10 +81,11 @@
     </a>
 
     <a href="https://domiedev.github.io/DomieTimer/" target="_blank" rel="noopener noreferrer" class="image-link">
-      <img src="TIMER.png" alt="Link zum DomieTimer Projekt" /> </a>
+      <img src="TIMER.png" alt="Link zum DomieTimer Projekt" />
+    </a>
   </div>
 
-  <a href="index" class="back-button">Startseite</a>
+  <a href="index" class="back-button">Zurück zur Startseite</a>
 
 </body>
 </html>
