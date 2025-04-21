@@ -26,18 +26,24 @@
     .image-container {
       display: flex; /* Bilder nebeneinander anordnen */
       justify-content: center; /* Bilder horizontal zentrieren */
-      align-items: center; /* Bilder vertikal zentrieren (falls unterschiedlich hoch) */
+      align-items: center; /* Bilder vertikal zentrieren (wichtig, wenn sie unterschiedlich hoch sind) */
       gap: 2rem; /* Abstand zwischen den Bildern */
       flex-wrap: wrap; /* Bei schmalen Bildschirmen umbrechen */
     }
 
+    /* Standard-Styling für alle Projekt-Bilder */
     .image-link img {
       display: block; /* Verhindert zusätzlichen Leerraum unter dem Bild */
-      width: 200px; /* Beispielbreite - anpassen nach Bedarf */
+      width: 200px; /* Standardbreite für Bilder */
       height: auto; /* Höhe automatisch anpassen */
       border: 2px solid transparent; /* Optional: Rahmen vorbereiten */
       border-radius: 8px; /* Abgerundete Ecken */
       transition: transform 0.3s ease, border-color 0.3s ease; /* Übergang für Hover-Effekt */
+    }
+
+    /* Spezifisches Styling für das Bugged Out Bild */
+    #bugged-out-image {
+      width: 250px; /* Größere Breite nur für dieses Bild - Anpassen nach Bedarf! */
     }
 
     .image-link:hover img {
@@ -67,16 +73,18 @@
 </head>
 <body>
 
-  <h2>Meine Projekte:</h2> <div class="image-container">
+  <h2>Meine Projekte:</h2>
+
+  <div class="image-container">
     <a href="https://domiedev.github.io/BuggedOut/" target="_blank" rel="noopener noreferrer" class="image-link">
-      <img src="BUGGED-OUT.png" alt="Link zum BuggedOut Projekt" />
+      <img id="bugged-out-image" src="BUGGED-OUT.png" alt="Link zum BuggedOut Projekt" />
     </a>
 
     <a href="https://domiedev.github.io/DomieTimer/" target="_blank" rel="noopener noreferrer" class="image-link">
-      <img src="TIMER.png" alt="Link zum DomieTimer Projekt" />
-    </a>
+      <img src="TIMER.png" alt="Link zum DomieTimer Projekt" /> </a>
   </div>
 
   <a href="index" class="back-button">Zurück zur Startseite</a>
-   </body>
+
+</body>
 </html>
